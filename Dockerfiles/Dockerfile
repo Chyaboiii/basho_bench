@@ -1,13 +1,13 @@
 FROM erlang:19
 
+ENV ADD_N 100
+ENV ADD_SET_N 0
 ENV COOKIE "antidote"
 ENV CONFIG "/opt/bigdata.config"
 ENV ANTIDOTE_NODE "antidote@antidote1"
 ENV BENCH_NODE "bench@bench1"
 ENV REPO "https://github.com/Chyaboiii/basho_bench.git"
 ENV BRANCH "antidote_pb_ccrdts_aws"
-
-_build/default/bin/basho_bench -N bench@127.0.0.1 -C antidote examples/antidote_bigdata.config
 
 RUN set -xe \
   && apt-get update \
