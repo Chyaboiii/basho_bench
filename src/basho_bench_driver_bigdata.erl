@@ -21,19 +21,17 @@
 new(Id) ->
 
     %% read relevant configuration from config file
-    %Nodes = basho_bench_config:get(antidote_nodes,['antidote@127.0.0.1']),
+    Nodes = basho_bench_config:get(antidote_nodes,['antidote@127.0.0.1']),
     Cookie = basho_bench_config:get(antidote_cookie,antidote),
 
-    % Sticky "sessions"
-    %Target = lists:nth((Id rem length(Nodes)+1), Nodes),
-    Target = 'antidote@127.0.0.1',
+    [Target | _] = Nodes,
 
     %% Initialize cookie for each of the nodes
     lager:info("~p~n", [node()]),
     true = erlang:set_cookie(node(), Cookie),
     true = erlang:set_cookie(Target, Cookie),
 
-    {ok, FilePid} = file:open("/home/jcalbuquerque/basho_bench/big_data", [read, binary]),
+    {ok, FilePid} = file:open(basho_bench_config:get(bigdata,"/home/jcalbuquerque/basho_bench/big_data"), [read, binary]),
 
     %% Seed random number
     rand:seed(exsplus, {erlang:phash2([node()]), erlang:monotonic_time(), erlang:unique_integer()}),
