@@ -52,7 +52,6 @@ run(add, _KeyGen, _Value_Gen, State=#state{pid = Id, file_pid = FPid, target = T
     Updates = maps:fold(fun(K, V, Acc) ->
         [{{K, antidote_ccrdt_topk}, {add, {TweetId, Followers*V}}} | Acc]
     end, [], Split),
-    io:format("~p~n", [TweetId]),
     Response = rpc:call(Target, antidote, update_objects, [ignore, [], [{Object, {update, Updates}}]]),
     case Response of
         {ok, _} ->
