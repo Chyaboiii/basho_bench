@@ -36,6 +36,11 @@ else
 
 fi
 
+PUBLIC_NODE_IP=`curl checkip.amazonaws.com`
+echo "{public_ip, {$PUBLIC_NODE_IP}}" > ./config/node-address.config
+sed -ie 's/\./,/g' ./config/node-address.config
+echo "." >> ./config/node-address.config
+
 make rel
 cd $BIN_DIR
 
