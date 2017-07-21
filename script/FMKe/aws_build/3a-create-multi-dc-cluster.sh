@@ -22,7 +22,7 @@ if [ -z "$CLEANMAKE" ]; then
     CLEANMAKE=TRUE
 fi
 if [ -z "$GITBRANCH" ]; then
-    GITBRANCH="ccrdts"
+    GITBRANCH="aws"
 fi
 
 # env

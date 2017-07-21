@@ -17,7 +17,7 @@ sudo chown ubuntu /usr/local/lib/R/site-library/
  #############################  antidote @############################
  ANTIDOTE_DIR=$HOME/antidote
 if [ -z "$ANTIDOTE_BRANCH" ]; then
-    ANTIDOTE_BRANCH="ccrdts"
+    ANTIDOTE_BRANCH="aws"
 fi
 
 if [ -d "$ANTIDOTE_DIR" ]; then
