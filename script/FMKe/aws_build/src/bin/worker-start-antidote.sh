@@ -7,7 +7,7 @@ if [ -z "$CLEANMAKE" ]; then
     CLEANMAKE=TRUE
 fi
 if [ -z "$GITBRANCH" ]; then
-    GITBRANCH="aws-ccrdts"
+    GITBRANCH="crdts"
 fi
 
 if [ CLEANMAKE=TRUE ]; then

@@ -13,7 +13,7 @@ if [ -z "$GITBRANCH" ]; then
     GITBRANCH="antidote_pb_ccrdts_aws"
 fi
 if [ -z "$CONFIG_FILE" ]; then
-    CONFIG_FILE="antidote_ccrdts_topkd_only"
+    CONFIG_FILE="antidote_bigdata_topk"
 fi
 
 if [ CLEANMAKE=TRUE ]; then
