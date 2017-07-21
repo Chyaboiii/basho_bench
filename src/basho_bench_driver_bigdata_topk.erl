@@ -74,13 +74,14 @@ get_data(Data) ->
     {maps:get(<<"id">>, M), maps:get(<<"text">>, M), maps:get(<<"count">>, M)}.
 
 split(Text) ->
-    Split = binary:split(Text, [<<"\n">>, <<" ">>], [global]),
-    lists:foldl(fun(Word, Acc) ->
-        case maps:is_key(Word, Acc) of
-            true ->
-                maps:update_with(Word, fun(V) -> V + 1 end, Acc);
-            false ->
-                maps:put(Word, 1, Acc)
-        end
-    end, #{}, Split).
+        Split = binary:split(Text, [<<"\n">>, <<" ">>], [global]),
+        lists:foldl(fun(Word, Acc) ->
+            case maps:is_key(Word, Acc) of
+                true ->
+                    V = maps:get(Word, Acc),
+                    maps:update(Word, V + 1, Acc);
+                false ->
+                    maps:put(Word, 1, Acc)
+            end
+        end, #{}, Split).
 

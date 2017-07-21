@@ -78,7 +78,8 @@ split(Text) ->
     lists:foldl(fun(Word, Acc) ->
         case maps:is_key(Word, Acc) of
             true ->
-                maps:update_with(Word, fun(V) -> V + 1 end, Acc);
+                V = maps:get(Word, Acc),
+                maps:update(Word, V + 1, Acc);
             false ->
                 maps:put(Word, 1, Acc)
         end
